@@ -13,6 +13,7 @@ namespace System.Net
 		/// <param name="bytes"></param>
 		public DataUri(byte[] bytes)
 		{
+			if (bytes == null) throw new ArgumentNullException("bytes");
 			this.Bytes = bytes;
 		}
 
@@ -21,10 +22,9 @@ namespace System.Net
 		/// </summary>
 		/// <param name="mediaType"></param>
 		/// <param name="bytes"></param>
-		public DataUri(string mediaType, byte[] bytes)
+		public DataUri(string mediaType, byte[] bytes) : this(bytes)
 		{
 			this.MediaType = mediaType;
-			this.Bytes = bytes;
 		}
 
 		/// <summary>
