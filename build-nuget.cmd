@@ -12,8 +12,8 @@ call .\build.cmd & if errorlevel 1 goto :END
 shift
 
 :SKIP_BUILD
-pushd Build
-%NUGET_EXE% pack ..\DataUri.nuspec -version %BUILD_VERSION%
+
+%NUGET_EXE% pack DataUri.nuspec -verbose -version %BUILD_VERSION%
 
 if not "%1" == "--no-deploy" %NUGET_EXE% 
 shift

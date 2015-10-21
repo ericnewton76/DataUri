@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>datauri</id>
-        <version>1.0</version>
+        <version>$version$</version>
         <title>DataUri</title>
         <authors>Eric Newton @lt;ericnewton76@gmail.com&gt;</authors>
         <owners>Eric Newton @lt;ericnewton76@gmail.com&gt;</owners>
@@ -13,7 +13,7 @@
         <tags>data uri</tags>
     </metadata>
     <files>
-        <file src="Build\DataUri\DataUri.dll" target="lib\net\DataUri.dll" />
-        <file src="Build\DataUri\DataUri.pdb" target="lib\net\DataUri.pdb" />
+        <file src="src\DataUri\bin\Release\DataUri.dll" target="lib\net\DataUri.dll" />
+        <file src="src\DataUri\bin\Rekease\DataUri.pdb" target="lib\net\DataUri.pdb" />
     </files>
 </package>
