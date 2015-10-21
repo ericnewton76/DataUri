@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>datauri</id>
+        <version>1.0</version>
+        <title>DataUri</title>
+        <authors>Eric Newton @lt;ericnewton76@gmail.com&gt;</authors>
+        <owners>Eric Newton @lt;ericnewton76@gmail.com&gt;</owners>
+        <projectUrl>https://github.com/ericnewton76/datauri</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>DataUri utility library for working with data-uris.</description>
+        <copyright>Copyright 2015</copyright>
+        <tags>data uri</tags>
+    </metadata>
+    <files>
+        <file src="Build\DataUri\DataUri.dll" target="lib\net\DataUri.dll" />
+        <file src="Build\DataUri\DataUri.pdb" target="lib\net\DataUri.pdb" />
+    </files>
+</package>
