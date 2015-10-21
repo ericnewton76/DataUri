@@ -22,9 +22,10 @@ shift
 :SKIP_BUILD
 
 REM Create Nuget Package
-%NUGET_EXE% pack DataUri.nuspec -verbose -version %BUILD_VERSION%
+echo %NUGET_EXE% pack DataUri.nuspec -version %BUILD_VERSION%
+%NUGET_EXE% pack DataUri.nuspec -version %BUILD_VERSION%
 
-if not "%1" == "--no-deploy" %NUGET_EXE% 
+REM if not "%1" == "--no-deploy" %NUGET_EXE% push
 shift
 
 :END
