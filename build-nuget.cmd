@@ -29,4 +29,4 @@ REM if not "%1" == "--no-deploy" %NUGET_EXE% push
 shift
 
 :END
-popd
+
