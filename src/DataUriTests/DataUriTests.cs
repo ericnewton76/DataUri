@@ -10,20 +10,29 @@ namespace DataUriTests
 	{
 		
 		[Test]
-		[TestCase("data:base64,QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo=", "4142434445464748494A4B4C4D4E4F505152535455565758595A")]
-		[TestCase("data:base64,TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtb3Q=", "4c6f72656d20697073756d20646f6c61722073697420616d6f74")]
-		public void Parse_Base64_NoMediaType(string input, string expectedBytesStr)
+		public void ctor_Null_Bytes_throws_ArgumentNullException()
 		{
 			//arrange
-			byte[] expectedBytes = HexStringToByteArray(expectedBytesStr);
 
 			//act
-			var datauri = DataUri.Parse(input);
 
 			//assert
-			Assert.That(datauri, Is.Not.Null);
-			Assert.That(datauri.Bytes, Is.EqualTo(expectedBytes));
-			Assert.That(datauri.MediaType, Is.EqualTo((string)null));
+			Assert.Throws<ArgumentNullException>(()=>{
+				new DataUri((byte[])null);
+			});
+		}
+		[Test]
+		public void ctor2_Null_Bytes_throws_ArgumentNullException()
+		{
+			//arrange
+
+			//act
+
+			//assert
+			Assert.Throws<ArgumentNullException>(() =>
+			{
+				new DataUri((string)null,(byte[])null);
+			});
 		}
 
 		#region test helpers

@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
-
 using DataUri = System.Net.DataUri;
 
 namespace DataUriTests
@@ -40,6 +40,20 @@ namespace DataUriTests
 				DataUri.Parse(input);
 			});
 		}
+
+		[Test]
+		public void Null_Value_throws_ArgumentNullException()
+		{
+			//assert
+			
+			//act
+
+			//assert
+			Assert.Throws<ArgumentNullException>(() => {
+				DataUri.Parse((string)null);
+			});
+		}
+		
 
 		#region test helpers
 		public static byte[] HexStringToByteArray(string hexString) //http://stackoverflow.com/a/8235530/323456

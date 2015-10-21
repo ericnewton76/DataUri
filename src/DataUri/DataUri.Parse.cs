@@ -14,6 +14,8 @@ namespace System.Net
 		/// <returns></returns>
 		public static DataUri Parse(string value)
 		{
+			if(value == null) throw new ArgumentNullException("value");
+
 			throw new NotImplementedException();
 		}
 
