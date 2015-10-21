@@ -6,7 +6,7 @@ using DataUri = System.Net.DataUri;
 namespace DataUriTests
 {
 	[TestFixture]
-	public class DataUri_Parse_Tests
+	public class DataUriTests
 	{
 		
 		[Test]
@@ -24,21 +24,6 @@ namespace DataUriTests
 			Assert.That(datauri, Is.Not.Null);
 			Assert.That(datauri.Bytes, Is.EqualTo(expectedBytes));
 			Assert.That(datauri.MediaType, Is.EqualTo((string)null));
-		}
-
-		[Test]
-		[TestCase("DATA:base64,QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo=")]
-		[TestCase("http://base64,TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtb3Q=")]
-		public void Must_start_with_data_throws_ArgumentException(string input)
-		{
-			//assert
-			
-			//act
-
-			//assert
-			Assert.Throws<ArgumentException>(() => {
-				DataUri.Parse(input);
-			});
 		}
 
 		#region test helpers
