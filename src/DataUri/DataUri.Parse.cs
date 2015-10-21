@@ -16,7 +16,19 @@ namespace System.Net
 		{
 			if(value == null) throw new ArgumentNullException("value");
 
-			throw new NotImplementedException();
+			if(value.StartsWith("data:") == false) throw new ArgumentException("A data-uri must start with 'data'.");
+
+			int charIndex = 5;
+			
+			if(value.Substring(charIndex,6)=="base64")
+			{
+				charIndex += 7; //accounts for the ,
+				string base64string = value.Substring(charIndex);
+				byte[] bytes = Convert.FromBase64String(base64string);
+				return new DataUri(bytes);
+			}
+
+			return null;
 		}
 
 	}
