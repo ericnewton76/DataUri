@@ -38,5 +38,24 @@ namespace System
 		/// Gets the Media type for this data-uri instance.
 		/// </summary>
 		public string MediaType { get; private set; }
+
+		public override string ToString()
+		{
+			return ToString("B");
+		}
+
+		public string ToString(string format)
+		{
+			if(format == null) throw new ArgumentNullException("format");
+
+			switch(format)
+			{
+				case "B":
+					return "data:" + this.MediaType + ";base64," + Convert.ToBase64String(this.Bytes);
+				default:
+					throw new ArgumentException(string.Format("Unexpected format '{0}'.", format));
+			}
+		}
+
 	}
 }

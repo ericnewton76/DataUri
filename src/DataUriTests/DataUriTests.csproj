@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteArrayHelpers.cs" />
+    <Compile Include="DataUri.Output.Tests.cs" />
     <Compile Include="DataUriTests.cs" />
     <Compile Include="DataUri.Parse.Tests.cs" />
     <Compile Include="DataUriTypeConverterTests.cs" />
