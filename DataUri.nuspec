@@ -4,8 +4,8 @@
         <id>datauri</id>
         <version>$version$</version>
         <title>DataUri</title>
-        <authors>Eric Newton @lt;ericnewton76@gmail.com&gt;</authors>
-        <owners>Eric Newton @lt;ericnewton76@gmail.com&gt;</owners>
+        <authors>Eric Newton</authors>
+        <owners>Eric Newton</owners>
         <projectUrl>https://github.com/ericnewton76/datauri</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>DataUri utility library for working with data-uris.</description>
