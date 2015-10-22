@@ -10,12 +10,13 @@ namespace DataUriTests
 	{
 		
 		[Test]
-		[TestCase("data:base64,QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo=", "4142434445464748494A4B4C4D4E4F505152535455565758595A")]
-		[TestCase("data:base64,TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtb3Q=", "4c6f72656d20697073756d20646f6c61722073697420616d6f74")]
+		[TestCase("data:;base64,QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo=", "4142434445464748494A4B4C4D4E4F505152535455565758595A")]
+		[TestCase("data:;base64,TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtb3Q=", "4c6f72656d20697073756d20646f6c61722073697420616d6f74")]
 		public void Parse_Base64_NoMediaType(string input, string expectedBytesStr)
 		{
 			//arrange
 			byte[] expectedBytes = HexStringToByteArray(expectedBytesStr);
+			string expected_MediaType = "text/plain"; //if not specified, media type is assumed to be text/plain
 
 			//act
 			var datauri = DataUri.Parse(input);
@@ -23,7 +24,25 @@ namespace DataUriTests
 			//assert
 			Assert.That(datauri, Is.Not.Null);
 			Assert.That(datauri.Bytes, Is.EqualTo(expectedBytes));
-			Assert.That(datauri.MediaType, Is.EqualTo((string)null));
+			Assert.That(datauri.MediaType, Is.EqualTo(expected_MediaType)); 
+		}
+
+		[Test]
+		[TestCase("data:image/jpeg;base64,QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo=", "4142434445464748494A4B4C4D4E4F505152535455565758595A")]
+		[TestCase("data:image/jpeg;base64,TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtb3Q=", "4c6f72656d20697073756d20646f6c61722073697420616d6f74")]
+		public void Parse_Base64_Specified_MediaType(string input, string expectedBytesStr)
+		{
+			//arrange
+			byte[] expectedBytes = HexStringToByteArray(expectedBytesStr);
+			string expected_MediaType = "image/jpeg"; //if not specified, media type is assumed to be text/plain
+
+			//act
+			var datauri = DataUri.Parse(input);
+
+			//assert
+			Assert.That(datauri, Is.Not.Null);
+			Assert.That(datauri.Bytes, Is.EqualTo(expectedBytes));
+			Assert.That(datauri.MediaType, Is.EqualTo(expected_MediaType));
 		}
 
 		[Test]
