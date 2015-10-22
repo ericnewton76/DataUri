@@ -35,6 +35,6 @@ namespace System.Net
 		/// <summary>
 		/// Gets the Media type for this data-uri instance.
 		/// </summary>
-		public string MediaType { get; set; }
+		public string MediaType { get; private set; }
 	}
 }
