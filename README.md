@@ -1,5 +1,10 @@
 # DataUri
 
+[![Build status](https://ci.appveyor.com/api/projects/status/l0ii5t8tvsdsrmw5?svg=true)](https://ci.appveyor.com/project/EricNewton/datauri)
+
+Nuget
+Install-Package DataUri
+
 Parses Data Uris.
 
 .cssclass
