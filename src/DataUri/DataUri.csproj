@@ -35,7 +35,11 @@
   <ItemGroup>
     <Compile Include="DataUri.cs" />
     <Compile Include="DataUri.Parse.cs" />
+    <Compile Include="DataUriTypeConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

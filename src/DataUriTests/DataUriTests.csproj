@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DataUriTests.cs" />
     <Compile Include="DataUri.Parse.Tests.cs" />
+    <Compile Include="DataUriTypeConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
