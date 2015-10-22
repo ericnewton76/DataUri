@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace System.Net
+namespace System
 {
 	public partial class DataUri
 	{

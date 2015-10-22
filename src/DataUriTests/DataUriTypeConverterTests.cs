@@ -37,7 +37,7 @@ namespace DataUriTests
 
 			//assert
 			Assert.That(actual_DataUri, Is.Not.Null);
-			Assert.That(actual_DataUri, Is.TypeOf<System.Net.DataUri>());
+			Assert.That(actual_DataUri, Is.TypeOf<System.DataUri>());
 			//Assert.That(actual_DataUri.MediaType, Is.EqualTo("image/jpeg"));
 			//Assert.That(actual_DataUri.Bytes, Is.EqualTo(expected_DataUri.Bytes));
 		}

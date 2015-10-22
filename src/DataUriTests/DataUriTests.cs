@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-using DataUri = System.Net.DataUri;
+using DataUri = System.DataUri;
 
 namespace DataUriTests
 {
