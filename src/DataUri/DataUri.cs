@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace System.Net
@@ -11,6 +12,7 @@ namespace System.Net
 		/// Construct a new DataUri instance
 		/// </summary>
 		/// <param name="bytes"></param>
+		[TypeConverter(typeof(DataUriTypeConverter))]
 		public DataUri(byte[] bytes)
 		{
 			if (bytes == null) throw new ArgumentNullException("bytes");
