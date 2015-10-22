@@ -5,6 +5,8 @@ using System.Text;
 
 namespace System
 {
+
+	[TypeConverter(typeof(DataUriTypeConverter))]
 	public sealed partial class DataUri
 	{
 
@@ -12,7 +14,6 @@ namespace System
 		/// Construct a new DataUri instance
 		/// </summary>
 		/// <param name="bytes"></param>
-		[TypeConverter(typeof(DataUriTypeConverter))]
 		public DataUri(byte[] bytes)
 		{
 			if (bytes == null) throw new ArgumentNullException("bytes");
