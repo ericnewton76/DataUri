@@ -48,6 +48,7 @@ namespace DataUriTests
 		[Test]
 		[TestCase("DATA:base64,QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo=")]
 		[TestCase("http://base64,TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtb3Q=")]
+		[TestCase("data-uri:base64,TASDSDASDASDASDAFEFE=")]
 		public void Must_start_with_data_throws_ArgumentException(string input)
 		{
 			//assert
