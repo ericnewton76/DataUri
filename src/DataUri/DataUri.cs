@@ -7,8 +7,11 @@ namespace System
 {
 
 	[TypeConverter(typeof(DataUriTypeConverter))]
-	public sealed partial class DataUri
+	[Serializable]
+	public sealed partial class DataUri : System.Xml.Serialization.IXmlSerializable
 	{
+
+		private DataUri() { }
 
 		/// <summary>
 		/// Construct a new DataUri instance
@@ -17,7 +20,7 @@ namespace System
 		public DataUri(byte[] bytes)
 		{
 			if (bytes == null) throw new ArgumentNullException("bytes");
-			this.Bytes = bytes;
+			this._Bytes = bytes;
 		}
 
 		/// <summary>
@@ -27,18 +30,27 @@ namespace System
 		/// <param name="bytes"></param>
 		public DataUri(string mediaType, byte[] bytes) : this(bytes)
 		{
-			this.MediaType = mediaType;
+			this._MediaType = mediaType;
 		}
+
+		private byte[] _Bytes;
+		private string _MediaType;
 
 		/// <summary>
 		/// Gets the bytes for this data-uri instance.
 		/// </summary>
-		public byte[] Bytes { get; private set; }
+		public byte[] Bytes 
+		{
+			get { return this._Bytes; }
+		}
 
 		/// <summary>
 		/// Gets the Media type for this data-uri instance.
 		/// </summary>
-		public string MediaType { get; private set; }
+		public string MediaType
+		{
+			get { return _MediaType; }
+		}
 
 		public override string ToString()
 		{
@@ -58,5 +70,28 @@ namespace System
 			}
 		}
 
+
+
+		public Xml.Schema.XmlSchema GetSchema()
+		{
+			throw new NotImplementedException();
+		}
+
+		void System.Xml.Serialization.IXmlSerializable.ReadXml(Xml.XmlReader reader)
+		{
+			var content = reader.ReadInnerXml();
+
+			string mediatype;
+			byte[] bytes;
+			ParseInternal(content, out mediatype, out bytes);
+
+			this._MediaType = mediatype;
+			this._Bytes = bytes;
+		}
+
+		void System.Xml.Serialization.IXmlSerializable.WriteXml(Xml.XmlWriter writer)
+		{
+			writer.WriteValue(this.ToString());
+		}
 	}
 }

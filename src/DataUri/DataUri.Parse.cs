@@ -18,11 +18,9 @@ namespace System
 
 			if(value.StartsWith("data:") == false) throw new ArgumentException("A data-uri must start with 'data'.");
 
-			byte[] bytes;
 			string mediaType;
+			byte[] bytes;
 			ParseInternal(value, out mediaType, out bytes);
-
-			if(mediaType == "") mediaType = "text/plain";
 
 			return new DataUri(mediaType, bytes);
 		}
@@ -80,6 +78,10 @@ namespace System
 			}
 
 			bytes = ParseInternal_ReadBytes(value, charIndex, base64encoding);
+
+			//finish up by checking mediatype.
+			if(mediatype == "") mediatype = "text/plain";
+
 		}
 
 		private static byte[] ParseInternal_ReadBytes(string value, int charIndex, bool base64encoding)
