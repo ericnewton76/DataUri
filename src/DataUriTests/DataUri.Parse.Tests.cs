@@ -46,6 +46,23 @@ namespace DataUriTests
 		}
 
 		[Test]
+		[TestCase("data:base64,QUJDREVGR0h JSktMTU5\nPUFFS\n\tU1RVVldYWVo=", "4142434445464748494A4B4C4D4E4F505152535455565758595A")]
+		public void Tolerates_whitespace_within_base64(string input, string expectedBytesStr)
+		{
+			//arrange
+			byte[] expectedBytes = HexStringToByteArray(expectedBytesStr);
+
+			//act
+			var datauri = DataUri.Parse(input);
+
+			//assert
+			Assert.That(datauri, Is.Not.Null);
+			Assert.That(datauri.Bytes, Is.EqualTo(expectedBytes));
+			Assert.That(datauri.MediaType, Is.EqualTo((string)null));
+
+		}
+
+		[Test]
 		[TestCase("DATA:base64,QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo=")]
 		[TestCase("http://base64,TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtb3Q=")]
 		[TestCase("data-uri:base64,TASDSDASDASDASDAFEFE=")]
