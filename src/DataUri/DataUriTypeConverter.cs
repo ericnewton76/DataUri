@@ -7,7 +7,16 @@ namespace System
 {
 	public class DataUriTypeConverter : System.ComponentModel.TypeConverter
 	{
-
+		public override bool IsValid(ComponentModel.ITypeDescriptorContext context, object value)
+		{
+			string valstr = value as string;
+			if(valstr != null)
+			{
+				if(valstr.StartsWith("data:"))
+					return true;
+			}
+			return false;
+		}
 		public override bool CanConvertFrom(ComponentModel.ITypeDescriptorContext context, Type sourceType)
 		{
 			if(sourceType == typeof(string))
@@ -20,7 +29,11 @@ namespace System
 		{
 			if(value is string)
 			{
-				return DataUri.Parse((string)value);
+				string valstr = value as string;
+				if(string.IsNullOrEmpty(valstr) == false && valstr.StartsWith("data:"))
+					return DataUri.Parse(valstr);
+				else
+					return null;
 			}
 			return base.ConvertFrom(context, culture, value);
 		}
