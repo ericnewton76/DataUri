@@ -4,18 +4,23 @@ setlocal
 REM initialization
 set PACKAGES_ROOT=%~dp0packages
 set NUGET_EXE=%PACKAGES_ROOT%\Nuget.Commandline.2.8.6\tools\nuget.exe
+nuget 2>NUL
+if errorlevel 0 if not errorlevel 255 echo using nuget from path & set NUGET_EXE=nuget
 
 REM appveyor
 if not "%APPVEYOR_BUILD_VERSION%" == "" set BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
-if not "%APPVEYOR_BUILD_VERSION%" == "" set NUGET_EXE=nuget
+if not "%APPVEYOR_BUILD_VERSION%" == "" echo using nuget from Appveyor environment & set NUGET_EXE=nuget
 
 REM checks
-nuget install
-
-if not exist "%NUGET_EXE%" echo Missing Nuget.Commandline.2.8.6 in packages, run Nuget Install & set FAIL=true
 if "%BUILD_VERSION%" == "" echo Missing BUILD_VERSION & set FAIL=true
 
+REM try install
+%NUGET_EXE% install
+if errorlevel 0 if not errorlevel 1 goto :NUGET_PACKAGES_INSTALLED
+if not "%NUGET_EXE%" == "nuget" if not exist "%NUGET_EXE%" echo Missing Nuget.Commandline.2.8.6 in packages, run Nuget Install & set FAIL=true
 if "%FAIL%" == "true" goto :END
+
+:NUGET_PACKAGES_INSTALLED
 
 mkdir Build 2>NUL
 
