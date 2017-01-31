@@ -38,7 +38,8 @@ namespace DataUriTests
 		{
 			//arrange
 			var ms = new System.IO.MemoryStream();
-			var mockObj = new MockObject() { 
+			
+			var sampleModelObject = new MockObject() { 
 				image = new DataUri("text/plain", new byte[] { 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49 } )
 			};
 			var serializer = new System.Runtime.Serialization.DataContractSerializer(typeof(DataUri));
@@ -46,7 +47,7 @@ namespace DataUriTests
 			var expectedVal = "data:text/plain;base64,QEFCQ0RFRkdISQ==";
 
 			//act
-			serializer.WriteObject(ms, mockObj);
+			serializer.WriteObject(ms, sampleModelObject);
 
 			var streamString = System.Text.Encoding.UTF8.GetString(ms.ToArray());
 			XDocument xdoc = XDocument.Parse("<root>" + streamString + "</root>");
@@ -62,9 +63,11 @@ namespace DataUriTests
 
 	[Serializable]
 	[KnownType(typeof(DataUri))]
+	[KnownType(typeof(MockObject))]
 	public class MockObject
 	{
-		
+
+
 		[DataMember]
 		public DataUri image { get; set; }
 	}
