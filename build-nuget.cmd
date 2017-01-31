@@ -10,6 +10,8 @@ if not "%APPVEYOR_BUILD_VERSION%" == "" set BUILD_VERSION=%APPVEYOR_BUILD_VERSIO
 if not "%APPVEYOR_BUILD_VERSION%" == "" set NUGET_EXE=nuget
 
 REM checks
+nuget install
+
 if not exist "%NUGET_EXE%" echo Missing Nuget.Commandline.2.8.6 in packages, run Nuget Install & set FAIL=true
 if "%BUILD_VERSION%" == "" echo Missing BUILD_VERSION & set FAIL=true
 
