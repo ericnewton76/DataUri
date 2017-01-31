@@ -13,7 +13,7 @@
         <tags>data uri</tags>
     </metadata>
     <files>
-        <file src="src\DataUri\bin\Release\DataUri.dll" target="lib\net\DataUri.dll" />
-        <file src="src\DataUri\bin\Release\DataUri.pdb" target="lib\net\DataUri.pdb" />
+        <file src="Release\DataUri.dll" target="lib\net\DataUri.dll" />
+        <file src="Release\DataUri.pdb" target="lib\net\DataUri.pdb" />
     </files>
 </package>
