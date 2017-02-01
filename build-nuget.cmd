@@ -4,7 +4,7 @@ setlocal
 REM initialization
 set PACKAGES_ROOT=%~dp0packages
 set NUGET_EXE=%PACKAGES_ROOT%\Nuget.Commandline.2.8.6\tools\nuget.exe
-nuget 2>NUL
+nuget 1>NUL 2>NUL
 if errorlevel 0 if not errorlevel 255 echo using nuget from path & set NUGET_EXE=nuget
 
 REM appveyor
